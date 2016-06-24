@@ -1,4 +1,4 @@
-# rxbus
+# RxBus
 RxBus is is a publish/subscribe event bus optimized for Android using RxJava.
 
     //Post Event
