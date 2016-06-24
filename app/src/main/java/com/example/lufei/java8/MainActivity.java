@@ -8,8 +8,12 @@ import android.widget.Toast;
 
 import com.baiwanlu.rxbus.RxBus;
 
+import rx.Subscription;
+
 public class MainActivity extends AppCompatActivity {
     private Button textBtn;
+
+    Subscription subscription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +29,18 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
-        RxBus.getDefault().subscribe(TestEvent.class, testEvent -> {
+        subscription = RxBus.getDefault().subscribe(TestEvent.class, testEvent -> {
             Toast.makeText(MainActivity.this, testEvent.test, Toast.LENGTH_SHORT).show();
         }, throwable -> {
 
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (!subscription.isUnsubscribed()) {
+            subscription.isUnsubscribed();
+        }
     }
 }
