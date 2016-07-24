@@ -1,4 +1,8 @@
 # RxBus
+
+    compile 'com.baiwanlu.android:rxbus:1.0.0'
+   
+   
 RxBus is is a publish/subscribe event bus optimized for Android using RxJava.
 
     //Post Event
